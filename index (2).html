@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vice Harbor P.D. The Return</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- MENU SCREEN -->
+    <div id="menuScreen" class="screen active">
+        <div class="container">
+            <div class="header">
+                <div class="subtitle">Vice Harbor Police Department</div>
+                <h1>The Return</h1>
+                <div class="case-info">Case Files - New Investigations</div>
+            </div>
+
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill" style="width: 0%"></div>
+            </div>
+
+            <div class="menu-grid" id="caseMenu"></div>
+        </div>
+    </div>
+
+    <!-- CASE BRIEFING SCREEN -->
+    <div id="briefingScreen" class="screen">
+        <div class="container">
+            <div class="header">
+                <h1 id="caseTitle"></h1>
+                <div class="case-info" id="caseDate"></div>
+            </div>
+            <div class="narrative" id="briefingText"></div>
+            <div class="button-group">
+                <button class="button" onclick="startInvestigation()">PROCEED TO CRIME SCENE →</button>
+                <button class="button" onclick="goToMenu()" style="background: var(--secondary);">BACK TO MENU</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- INVESTIGATION SCREEN -->
+    <div id="investigationScreen" class="screen">
+        <div class="container">
+            <div class="header">
+                <h1 id="sceneTitle">Crime Scene Investigation</h1>
+            </div>
+            <div class="investigation-layout">
+                <div class="scene-container">
+                    <h2>🔍 Crime Scene</h2>
+                    <p style="margin-bottom: 20px; font-size: 0.9rem;">Click on items to examine them</p>
+                    <div class="scene-items" id="sceneItems"></div>
+                </div>
+                <div class="evidence-panel">
+                    <h3>📋 Evidence Collected</h3>
+                    <div id="evidenceList"></div>
+                    <button class="button" onclick="proceedToInterrogation()" style="width: 100%; margin-top: 20px;">PROCEED TO INTERROGATION →</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- INTERROGATION SCREEN -->
+    <div id="interrogationScreen" class="screen">
+        <div class="container">
+            <div class="header">
+                <h1>Interrogation Room</h1>
+                <div class="case-info" id="interrogationInfo"></div>
+            </div>
+            <h2 style="margin: 30px 0; color: var(--neon);">Select a Suspect</h2>
+            <div class="suspect-list" id="suspectList"></div>
+            <div class="button-group">
+                <button class="button" onclick="proceedToArrest()">PROCEED TO ARREST DECISION →</button>
+                <button class="button" onclick="goToMenu()" style="background: var(--secondary);">BACK TO MENU</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ARREST DECISION SCREEN -->
+    <div id="arrestScreen" class="screen">
+        <div class="container">
+            <div class="header">
+                <h1>⚖️ Arrest Decision</h1>
+            </div>
+            <div class="arrest-warning">
+                <h3>Make Your Choice</h3>
+                <p>You've gathered the evidence. You've questioned the suspects. Now it's time to make an arrest.</p>
+            </div>
+            <div class="suspect-list" id="arrestSuspectList"></div>
+            <div class="button-group">
+                <button class="button" id="arrestButton" onclick="makeArrest()" disabled>MAKE ARREST</button>
+                <button class="button" onclick="goToMenu()" style="background: var(--secondary);">BACK TO MENU</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- CASE SOLVED SCREEN -->
+    <div id="solvedScreen" class="screen">
+        <div class="container">
+            <div class="header">
+                <h1>🎯 Case Solved</h1>
+            </div>
+            <div class="narrative critical">
+                <h2 style="font-family: 'Roboto Mono', Monospace; margin-bottom: 20px; color: var(--accent);">The Truth Revealed</h2>
+                <div id="revealText"></div>
+            </div>
+            <div class="button-group">
+                <button class="button" onclick="goToMenu()">RETURN TO MENU</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- FINAL ENDING SCREEN -->
+    <div id="endingScreen" class="screen">
+        <div class="container">
+            <div class="ending">
+                <h2 id="endingTitle">The Truth</h2>
+                <div class="narrative critical" id="endingText"></div>
+                <div class="button-group">
+                    <button class="button" onclick="location.reload()">PLAY AGAIN</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- EVIDENCE DETAIL MODAL -->
+    <div id="evidenceModal" class="evidence-detail-modal">
+        <div class="evidence-detail-content">
+            <button class="close-modal" onclick="closeEvidenceModal()">CLOSE</button>
+            <h3 id="modalEvidenceTitle"></h3>
+            <div class="evidence-analysis" id="modalEvidenceAnalysis"></div>
+            <div class="evidence-connections" id="modalConnections"></div>
+        </div>
+    </div>
+<script src="cases.js"></script>
+    <script src="game.js"></script>
+</body>
+</html>
